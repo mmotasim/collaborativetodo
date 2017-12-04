@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='/login')
+    div.form-group
+      label(for='name') Username :
+      input#name.form-control(type='text', placeholder='Enter Username Here' name='name' value=(undefined===person ? '' : person.name))
+      if visible
+        label(class="text-danger") **User not found
+    button.btn.btn-primary(type='submit') Login
+    br
+    br
+    a(href="/signup")
+      button(type="button") Signup
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
