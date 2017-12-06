@@ -7,6 +7,8 @@ block content
     div.form-group
       label(for='name') Username :
       input#name.form-control(type='text', placeholder='Enter Username Here' name='name' value=(undefined===person ? '' : person.name))
+      label(for='password') Password :
+      input#name.form-control(type='password', placeholder='Password' name='password' value=(undefined===person ? '' : person.password))
       if visible
         label(class="text-danger") **User not found
     button.btn.btn-primary(type='submit') Login
