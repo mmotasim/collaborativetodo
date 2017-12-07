@@ -6,6 +6,8 @@ $(function () {
         console.log("Detected hash change event")
         render(decodeURI(window.location.hash));
     });
+
+
     $("#newuser_submit").on('click',function(){
         console.log($("#newuser").val())
         var request = $.ajax({

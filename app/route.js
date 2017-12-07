@@ -10,6 +10,7 @@ var circle = require('./routes/circle')
 var members = require('./routes/members')
 var profile = require('./routes/profile')
 var addmember = require('./routes/addmember')
+var requests = require('./routes/requests')
 
 var isAuthenticated = function (req, res, next) {
     if(!req.xhr)
@@ -35,5 +36,5 @@ router.use('/circle',isAuthenticated,circle)
 router.use('/members',isAuthenticated,members)
 router.use('/profile',isAuthenticated,profile)
 router.use('/addmember',isAuthenticated,addmember)
-
+router.use('/requests',isAuthenticated,requests)
 module.exports=router;
