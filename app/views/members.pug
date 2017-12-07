@@ -1,10 +1,11 @@
 block content
     h1 Here are the members of the group
-    br
-    br
     ol
         each member in members
             li
                 a(href='/profile/'+member.username) #{member.username}
+
+    br
+    br
 
 

@@ -13,7 +13,7 @@ router.get('/:circle_id', function(req, res, next) {
         console.log(circle.members)
         if(circle.members.includes(cur_user))
         {
-            res.render('circle',{})
+            res.render('circle',{circlename:circle.name})
         }
         else
         {
