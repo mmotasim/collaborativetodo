@@ -5,9 +5,6 @@ block content
     ol
         each member in members
             li
-                a(href='/user/'+member.username) #{member.username}
+                a(href='/profile/'+member.username) #{member.username}
 
-    div.form-group
-        label(for='name') Username : 
-        input(type="text",id="newuser", name= "newuser" , placeholder='Enter User Name of New User')
-        button.btn.btn-primary(type='submit' id="submit") Add Member
+

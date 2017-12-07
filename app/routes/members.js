@@ -31,6 +31,7 @@ router.get('/:circle_id', function(req, res, next) {
     })
 
   });
+  
 
 
 module.exports = router;
