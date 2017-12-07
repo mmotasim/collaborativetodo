@@ -5,6 +5,7 @@ var index = require('./routes/index');
 var signup = require('./routes/signup');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
+var circles = require('./routes/circles')
 
 var isAuthenticated = function (req, res, next) {
     console.log("The current user is ");
@@ -17,5 +18,6 @@ router.use('/', index);
 router.use('/signup', signup);
 router.use('/login', login);
 router.use('/logout', logout);
+router.use('/circles',isAuthenticated,circles)
 
 module.exports=router;
