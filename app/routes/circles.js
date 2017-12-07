@@ -28,6 +28,7 @@ router.get('/', function(req, res, next) {
               
 });
 
+
 router.post('/',function(req,res,next){
      var cir = new circles()
         cir.name = req.body.circlename
@@ -35,11 +36,8 @@ router.post('/',function(req,res,next){
         user = req.session.user
         users.findOne({username : user},function(err,user){
             cir.save(function(err,circle){
-                console.log("circle id is of the type : "+schema.ObjectId(circle._id))
                 user.groups.push(circle._id)
                 user.save(function(err,upuser){
-                    console.log("The groups of updated user")
-                    console.log(upuser.groups)
                 })
                 
             })

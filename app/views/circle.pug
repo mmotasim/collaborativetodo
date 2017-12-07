@@ -1,22 +1,28 @@
 extends layout
+
 block content
+    script
+        include ../ajax/circle_ajax.js
+    br
+    br
     <div class="container-fluid navbar-inverse">
         <div class="navbar-header ">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#circlenavbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="collapse navbar-collapse" id="circlenavbar">
             <ul class="nav navbar-nav">
-                <li><a href="../#members">Members</a></li>
-                <li><a href="../#rankings">Rankings</a></li>
-                <li><a href="../#statistics">Statistics</a></li>
+                <li><a href="#members">Members</a></li>
+                <li><a href="#rankings">Rankings</a></li>
+                <li><a href="#statistics">Statistics</a></li>
             </ul>
         </div>
     </div>
     <div id="members"></div>
     <div id="ranking"></div>
     <div id="statistics"></div>
+

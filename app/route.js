@@ -6,12 +6,23 @@ var signup = require('./routes/signup');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var circles = require('./routes/circles')
+var circle = require('./routes/circle')
+var members = require('./routes/members')
+var profile = require('./routes/profile')
 
 var isAuthenticated = function (req, res, next) {
-    console.log("The current user is ");
-    console.log(req.session.user);
-	if (req.session.user) return next();
-	res.redirect("/");
+    if(!req.xhr)
+    {
+        if (req.session.user) return next();
+        res.redirect("/");
+    }
+
+    else
+    {
+        if (req.session.user) return next();
+        res.redirect("/");
+    }
+	
 }
 
 router.use('/', index);
@@ -19,5 +30,8 @@ router.use('/signup', signup);
 router.use('/login', login);
 router.use('/logout', logout);
 router.use('/circles',isAuthenticated,circles)
+router.use('/circle',isAuthenticated,circle)
+router.use('/members',isAuthenticated,members)
+router.use('/profile',isAuthenticated,profile)
 
 module.exports=router;
