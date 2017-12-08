@@ -1,8 +1,11 @@
 body {
+  background-image: url(../b.jpg);
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 34px "Lucida Grande", italic;
+  color:#e9ece5;
 }
 
-a {
-  color: #00B7FF;
+h2 {
+  color: white;
+  font: 54px "Lucida Grande", Helvetica, Arial, italic;
 }
