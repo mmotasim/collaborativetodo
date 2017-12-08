@@ -1,0 +1,104 @@
+extends layout
+
+block content
+    h1 Here is your to-do-list
+    ol
+        each item in items
+            li
+                if item.status == "checked"
+                    h5
+                        strike #{item.description}
+                    if item.privacy == "private"
+                        sup(class = 'text-danger') (private task)
+                    else
+                        sup(class = 'text-primary') (public task)
+                else
+                    h5  #{item.description}
+                    if item.privacy == "private"
+                        sup(class = 'text-danger') (private task)
+                    else
+                        sup(class = 'text-primary') (public task)
+                br
+                
+                a(role="button" class="btn btn-success done_item" id=item.id) Mark as done
+                a(role="button" class="btn btn-danger delete_item" id=item.id) Delete item
+                br
+    
+    br
+    br
+    div.form-group
+        label(for='name') New Task : 
+        input(type="text",id="item", name= "item" , placeholder='What do you want to do?')
+        br
+        button.btn.btn-primary(id="publicsubmit" class="btn btn-info") Add as Public item
+        button.btn.btn-primary(id="privatesubmit" class="btn btn-warning") Add as private item
+
+
+
+    script.
+        $("#publicsubmit").click(function(){
+            var request = $.ajax({
+            url:window.location.origin+"/additem",
+            method: "POST",
+            dataType: "text",
+            data:{
+                desc : $("#item").val(),
+                priv : "public",
+                stat : "unchecked"
+            },
+            success:function(data){
+                alert("Item added. Intentions - Execution = Action")
+                location.reload()
+            }
+          });
+        });
+          $("#privatesubmit").click(function(){
+            var request = $.ajax({
+            url:window.location.origin+"/additem",
+            method: "POST",
+            dataType: "text",
+            data:{
+                desc : $("#item").val(),
+                priv : "private",
+                stat : "unchecked"
+            },
+            success:function(data){
+                alert("Item added as private. Intentions - Execution = Action")
+                location.reload()
+            }
+          });
+        });
+        $(".done_item").click(function(){
+            iid = this.id
+            var request = $.ajax({
+            url:window.location.origin+"/alteritem",
+            method: "POST",
+            dataType: "text",
+            data:{
+                del_done:"done",
+                item_id : iid
+            },
+            success:function(data){
+                alert("item marked as done")
+                location.reload()
+            }
+          });
+        });
+          $(".delete_item").click(function(){
+            iid = this.id
+            var request = $.ajax({
+            url:window.location.origin+"/alteritem",
+            method: "POST",
+            dataType: "text",
+            data:{
+                del_done:"delete",
+                item_id : iid
+            },
+            success:function(data){
+                alert("item deleted sucessfully")
+                location.reload()
+            }
+          });
+        });          
+
+

@@ -11,6 +11,9 @@ var members = require('./routes/members')
 var profile = require('./routes/profile')
 var addmember = require('./routes/addmember')
 var requests = require('./routes/requests')
+var to_do_list = require('./routes/to_do_list')
+var additem = require('./routes/additem')
+var alteritem = require('./routes/alteritem')
 
 var isAuthenticated = function (req, res, next) {
     if(!req.xhr)
@@ -37,4 +40,7 @@ router.use('/members',isAuthenticated,members)
 router.use('/profile',isAuthenticated,profile)
 router.use('/addmember',isAuthenticated,addmember)
 router.use('/requests',isAuthenticated,requests)
+router.use('/to_do_list',isAuthenticated,to_do_list)
+router.use('/additem',isAuthenticated,additem)
+router.use('/alteritem',isAuthenticated,alteritem)
 module.exports=router;
