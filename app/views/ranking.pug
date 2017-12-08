@@ -1,0 +1,14 @@
+block content
+  h1= title
+  table(class="table")
+    thead
+      tr
+        th Rank
+        th User
+        th Percentage of Tasks completed
+    
+    each member in members
+        tr
+            td #{member.rank}
+            td #{member.name}
+            td #{member.percentage}%

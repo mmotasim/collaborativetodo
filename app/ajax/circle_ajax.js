@@ -64,23 +64,21 @@ $(function () {
                             }
                           });
                     },
-                    '#signup': function() {
-                        hideallpages();
+                    '#ranking': function() {
+                        $('#members').hide()
+                        $("#statistics").hide();
+                        $("#add").hide()
+
+                        url = window.location.origin+"/ranking/"+window.location.pathname.split('/')[2]
+                        console.log(url)
                         var request = $.ajax({
-                        url: window.location.origin,
+                        url:url,
                         method: "GET",
-                        dataType: "JSON",
-                        success:function(){
-                            console.log(request)
-                            if(request.responseJSON.user)
-                            {
-                                window.location.hash="#profile";
-                            }
-                            else
-                            {
-                                $(".signup").show();
-                                $(".text-danger").hide();
-                            }
+                        dataType: "html",
+                        success:function(data){
+                            console.log(data)
+                            document.getElementById("ranking").innerHTML = data
+                            $('#ranking').show()
                         }
                       });
                     }
