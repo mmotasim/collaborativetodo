@@ -14,6 +14,7 @@ var requests = require('./routes/requests')
 var to_do_list = require('./routes/to_do_list')
 var additem = require('./routes/additem')
 var alteritem = require('./routes/alteritem')
+var ranking = require('./routes/ranking')
 
 var isAuthenticated = function (req, res, next) {
     if(!req.xhr)
@@ -43,4 +44,5 @@ router.use('/requests',isAuthenticated,requests)
 router.use('/to_do_list',isAuthenticated,to_do_list)
 router.use('/additem',isAuthenticated,additem)
 router.use('/alteritem',isAuthenticated,alteritem)
+router.use('/ranking',isAuthenticated,ranking)
 module.exports=router;
