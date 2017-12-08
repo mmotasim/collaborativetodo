@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    h1 Here are your requests
+    ol
+        each request in requests
+            li
+                h3 #{request.sent_by} has invited you to join the circle : 
+                    I #{request.circlename}
+                a(role="button" class="btn btn-success a_request" id=request.id) Accept
+                a(role="button" class="btn btn-danger r_request" id=request.id) Reject
+                br
+    script.
+        $(".a_request").click(function(){
+            rid = this.id
+            var request = $.ajax({
+            url:window.location.origin+"/requests",
+            method: "POST",
+            dataType: "text",
+            data:{
+                accept:1,
+                reqid:rid
+            },
+            success:function(data){
+                alert("You have successfully joined the group")
+                location.reload()
+            }
+          });
+        });
+          $(".r_request").click(function(){
+            rid = this.id
+            var request = $.ajax({
+            url:window.location.origin+"/requests",
+            method: "POST",
+            dataType: "text",
+            data:{
+                accept:0,
+                reqid:rid
+            },
+            success:function(data){
+                alert("Invitation declined")
+                location.reload()
+            }
+          });
+        });          
+
+
