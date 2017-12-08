@@ -33,7 +33,7 @@ router.post('/',function(req,res,next){
         user = req.session.user
         var rid = new mongoose.Types.ObjectId(reqid.toString());
         requests.findOne({_id:rid},async function(err,request){
-            if(req.body.accept)
+            if(req.body.accept == 1)
             {
                 var cid = new mongoose.Types.ObjectId(request.for_circle.toString())
                 circle = await circles.findOne({_id:cid})
@@ -47,6 +47,7 @@ router.post('/',function(req,res,next){
             }
             else
             {
+                console.log("Removing request")
                 request.remove()
                 res.send("0")
             }
