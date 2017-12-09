@@ -9,8 +9,10 @@ block content
       input#name.form-control(type='text', placeholder='Enter Username Here' name='name' value=(undefined===person ? '' : person.name))
       label(for='password') Password :
       input#name.form-control(type='password', placeholder='Password' name='password' value=(undefined===person ? '' : person.password))
-      if visible
+      if visible == 1
         label(class="text-danger") **User not found
+      else if visible == 2
+        label(class="text-danger") **Incorrect password
     button.btn.btn-primary(type='submit') Login
     br
     br
