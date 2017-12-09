@@ -34,7 +34,8 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"prasad"
+                       name:"praj",
+                       password:"abc"
                    },
                    headers:{
                        Cookie : cookies[0]

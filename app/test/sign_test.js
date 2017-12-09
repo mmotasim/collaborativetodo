@@ -33,8 +33,11 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"qaa1v", //enter new unique user - the url is login temporarily so that "npm test" runs successfully
-                   },
+                       name:"praj",
+                       password:"abc"//enter new unique user - the url is login temporarily so that "npm test" runs successfully
+                   },   
+                       
+                  
                    headers:{
                        Cookie : cookies[0]
                    }

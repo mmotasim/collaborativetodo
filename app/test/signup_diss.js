@@ -33,7 +33,8 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/signup",
                    data:{
-                       name1:"pramod"
+                       name:"praj",
+                       password:"abc"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -48,7 +49,8 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/signup",
                    data:{
-                       name1:"pramod"
+                       name:"praj",
+                       password:"abc"
                    },
                    headers:{
                        Cookie : cookies[0]

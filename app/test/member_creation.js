@@ -34,7 +34,8 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"pr1Asdss"
+                       name:"praj",
+                       password:"abc"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -101,21 +102,7 @@ describe("Server", function(){
                    
                    });
 
-            var result = await axios(
-               {
-                   method :"POST",
-                   url: "http://localhost:8080/login",
-                   data:{
-                       name:'pramod'
-                   },
-                   headers:{
-                       Cookie : cookies[0]
-                   }
-                   
-                   });
-                   
-            
-                    
+
             
             // console.log(result.request._redirectable._currentUrl);
             //assert(result.data.search("has invited you to join the circle") >= 0 );
@@ -132,7 +119,8 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"pramod"
+                       name:"pramod",
+                       password:"abcd",
                    },
                    headers:{
                        Cookie : cookies[0]
