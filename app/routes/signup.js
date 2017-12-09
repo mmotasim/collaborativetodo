@@ -23,6 +23,10 @@ router.post('/', function(req,res,next)
         {
             res.render('signup', { title: 'Sign Up Page', visible: 1});
         }
+        else if(req.body.name == '' || req.body.password == '')
+        {
+            res.render('signup', { title: 'Sign Up Page', visible: 2});
+        }
         else
         {
             user = {
