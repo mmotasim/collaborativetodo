@@ -35,7 +35,6 @@ router.post('/',function(req,res,next){
             }
             else
             {
-                console.log("Removing request")
                 request.remove()
                 res.send("0")
             }
