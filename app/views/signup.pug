@@ -9,8 +9,10 @@ block content
       input#name.form-control(type='text', placeholder='Enter Name Here' name='name' value=(undefined===person ? '' : person.name))
       label(for='password') Password :
       input#name.form-control(type='password', placeholder='Password' name='password' value=(undefined===person ? '' : person.password))
-      if visible
+      if visible == 1
         label(class="text-danger") **Username already taken
+      else if visible == 2
+        label(class="text-danger") **Either Username Or Password is empty
     button.btn.btn-primary(type='submit') Create User
     
     

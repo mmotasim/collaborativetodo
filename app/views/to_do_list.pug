@@ -37,7 +37,13 @@ block content
 
     script.
         $("#publicsubmit").click(function(){
-            var request = $.ajax({
+            if($("#item").val() == '')
+            {
+                alert("Does empty to-do-list item mean something?")
+            }
+            else
+            {
+                var request = $.ajax({
             url:window.location.origin+"/additem",
             method: "POST",
             dataType: "text",
@@ -50,10 +56,19 @@ block content
                 alert("Item added. Intentions - Execution = Action")
                 location.reload()
             }
-          });
+            });
+            }
+            
         });
           $("#privatesubmit").click(function(){
-            var request = $.ajax({
+            if($("#item").val() == '')
+            {
+                alert("Does empty to-do-list item mean something?")
+            }
+            else
+            {
+
+                var request = $.ajax({
             url:window.location.origin+"/additem",
             method: "POST",
             dataType: "text",
@@ -67,6 +82,8 @@ block content
                 location.reload()
             }
           });
+            }
+            
         });
         $(".done_item").click(function(){
             iid = this.id

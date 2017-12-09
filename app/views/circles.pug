@@ -18,17 +18,26 @@ block content
     script.
         $("#submit").click(function(){
             var circlename= $("#circlename").val();
-            var request = $.ajax({
+            if(circlename == '')
+            {
+                alert("Circle name cannot be empty")
+            }
+            else
+            {
+                var request = $.ajax({
                 url: window.location.origin+"/circles",
                 method: "POST",
-                dataType: "JSON",
+                dataType: "text",
                 data:{
                     circlename:circlename
                 },
-                success : function(){
+                success : function(data){
                     alert('New Group created')
                     location.reload()
                 }
             });
-            });
+
+            }
+                        });
+            
         

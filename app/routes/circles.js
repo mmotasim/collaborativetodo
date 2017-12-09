@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
                 circs.push(circle)
         
             }
+
             res.render('circles',{circles : circs})
         })
               
