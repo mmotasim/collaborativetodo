@@ -17,9 +17,12 @@ describe("Server", function(){
         server.close();
    
     });
-    
     describe('/',function() {
-         it("Should redirect to profile page if the user clicks on signup after logging in", async function(){
+        it("should allow an HTTP GET request", async function () {
+            var result = await axios("http://localhost:8080");
+            assert(result.status == 200);});
+
+        it("Should redirect to profile page if the user clicks on signup after logging in", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');

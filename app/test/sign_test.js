@@ -17,7 +17,7 @@ describe("Server", function(){
     });
     
     describe('/',function() {
-        it("should allow an HTTP GET request", async function () {
+    it("should allow an HTTP GET request", async function () {
             var result = await axios("http://localhost:8080");
             assert(result.status == 200);
         });
@@ -34,7 +34,7 @@ describe("Server", function(){
                    url: "http://localhost:8080/login",
                    data:{
                        name:"praj",
-                       password:"abc"//enter new unique user - the url is login temporarily so that "npm test" runs successfully
+                       password:"abc"//enter new unique user - the url is login temporarily so that "npm test" runs successfully 
                    },   
                        
                   

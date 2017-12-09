@@ -20,9 +20,12 @@ describe("Server", function(){
         server.close();
    
     });
-    
     describe('/',function() {
-         it("Should go inside a circle when the circle is clicked on", async function(){
+        it("should allow an HTTP GET request", async function () {
+            var result = await axios("http://localhost:8080");
+            assert(result.status == 200);});
+
+        it("Should go inside a circle when the circle is clicked on", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
