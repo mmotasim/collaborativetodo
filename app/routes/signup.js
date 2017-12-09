@@ -31,7 +31,7 @@ router.post('/', function(req,res,next)
                 gender : "Male",
                 groups : [],
                 requests : [],
-                to_do_list : null
+                to_do_list : []
                 }
             users.create(user);
             req.session.user = user.username

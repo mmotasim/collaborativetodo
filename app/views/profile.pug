@@ -1,3 +1,30 @@
 extends layout
 block content
-  h1 This is the profile of #{user.username}
+    h1 This is the profile of : #{user.username}
+    h3 To-do-list
+
+    ol
+      each item in user.to_do_list
+          li
+              if item.status == "checked"
+                  if item.privacy == "public"
+                      h5
+                          strike #{item.description}
+                  else
+                      if owner
+                          h5
+                              strike #{item.description}
+                          sup(class = 'text-danger') (private task)
+                      else
+                          strike ***private task***
+              else
+                  if item.privacy == "public"
+                      h5
+                          p #{item.description}
+                  else
+                      if owner
+                          h5
+                              p #{item.description}
+                          sup(class = 'text-danger') (private task)
+                      else
+                          p ***private task***
