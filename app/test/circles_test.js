@@ -19,6 +19,7 @@ describe("Server", function(){
    
     });
     describe('/',function() {
+        this.timeout(15000);
         it("should allow an HTTP GET request", async function () {
             var result = await axios("http://localhost:8080");
             assert(result.status == 200);});

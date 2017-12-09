@@ -19,11 +19,7 @@ describe("Server", function(){
    
     });
     describe('/',function() {
-    it("should allow an HTTP GET request", async function () {
-            var result = await axios("http://localhost:8080");
-            assert(result.status == 200);
-        });
-
+    this.timeout(5000);    
     it("should go to the requests page", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
