@@ -2,10 +2,10 @@ body {
   background-image: url(../b.jpg);
   padding: 50px;
   font: 34px "Lucida Grande", italic;
-  color:#e9ece5;
+  color:White;
 }
 
 h2 {
-  color: white;
+  color: White;
   font: 54px "Lucida Grande", Helvetica, Arial, italic;
 }

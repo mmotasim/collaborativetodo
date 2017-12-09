@@ -17,7 +17,7 @@ describe("Server", function(){
     });
     
     describe('/',function() {
-         it("Check if logout redirects to homepage ", async function(){
+         it("Should redirect to homepage ", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
@@ -27,9 +27,9 @@ describe("Server", function(){
            var result = await axios(
                {
                    method :"POST",
-                   url: "http://localhost:8080/signup",
+                   url: "http://localhost:8080/login",
                    data:{
-                       name:"prasad"
+                       name:"pramod"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -40,9 +40,7 @@ describe("Server", function(){
                {
                    method :"GET",
                    url: "http://localhost:8080/logout",
-                   data:{
-                       name:"prasad"
-                   },
+
                    headers:{
                        Cookie : cookies[0]
                    }
@@ -51,7 +49,7 @@ describe("Server", function(){
             
 
                 // console.log(result.request._redirectable._currentUrl);
-                assert(result.data.search("Welcome to Home Page") >= 0 );
+                assert(result.data.search("CollabGoals") >= 0 );
         });
     });
 });

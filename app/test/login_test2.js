@@ -19,7 +19,7 @@ describe("Server", function(){
     });
     
     describe('/',function() {
-         it("Check redirect to the profile page if user already logged in", async function(){
+         it("Should redirect to profile page if the user clicks on signup after logging in", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
@@ -29,9 +29,9 @@ describe("Server", function(){
            var result = await axios(
                {
                    method :"POST",
-                   url: "http://localhost:8080/signup",
+                   url: "http://localhost:8080/login",
                    data:{
-                       name:"prasad1"
+                       name:"pramod"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -42,9 +42,7 @@ describe("Server", function(){
                {
                    method :"GET",
                    url: "http://localhost:8080/signup",
-                   data:{
-                       name:"prasad"
-                   },
+
                    headers:{
                        Cookie : cookies[0]
                    }
@@ -53,7 +51,7 @@ describe("Server", function(){
             
 
                 // console.log(result.request._redirectable._currentUrl);
-                assert(result.data.search("This is the profile of prasad") >= 0 );
+                assert(result.data.search("This is the profile of") >= 0 );
         });
     });
 });

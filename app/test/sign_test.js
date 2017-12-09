@@ -1,7 +1,6 @@
 const axios = require('axios');
 const assert = require('assert');
 const querystring = require('querystring');
-const rp= require('request-promise');
 
 describe("Server", function(){
     var app,server;
@@ -22,7 +21,7 @@ describe("Server", function(){
             var result = await axios("http://localhost:8080");
             assert(result.status == 200);
         });
-    it("Check for message ", async function(){
+    it("should go the user's profile page", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
@@ -34,15 +33,23 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/signup",
                    data:{
-                       name:"qaa112",
-                       password:"abc"
+                       name:"qaa11v", //enter new unique user
                    },
                    headers:{
                        Cookie : cookies[0]
                    }
                    
                    });
-                assert(result.data.search("qaa112") >= 0 );
+            var result = await axios(
+               {
+                   method :"GET",
+                   url: "http://localhost:8080/profile",
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
+                   });
+                assert(result.data.search("This is the profile of ") >= 0 );
         });
     
             

@@ -22,7 +22,7 @@ describe("Server", function(){
     });
     
     describe('/',function() {
-         it("Should go inside a circle when the circle is clicked on", async function(){
+         it("Check if circles works right", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
@@ -34,7 +34,7 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"prasad"
+                       name:"pr1Ass"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -74,16 +74,62 @@ describe("Server", function(){
                 
             });
             console.log(x);
-            var result = await axios(
+            var y= x.split('/')[2]
+            console.log(y)
+             var result = await axios(
                {
-                   method :"GET",
-                   url: "http://localhost:8080"+x ,
+                   method :"POST",
+                   url: "http://localhost:8080/addmember" ,
+                   data:{
+                       newuser:"loude_mota",
+                       circle: y
+                   },
                    headers:{
                        Cookie : cookies[0]
                    }
+                   
+                   });  
+
+            var result = await axios(
+               {
+                   method :"GET",
+                   url: "http://localhost:8080/login",
+
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
                    });
+                               
+             var result = await axios(
+               {
+                   method :"GET",
+                   url: "http://localhost:8080/logout",
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
+                   });
+            var result = await axios(
+               {
+                   method :"GET",
+                   url: "http://localhost:8080/profile",
+                   data:{
+                       name:'pramod'
+                   },
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
+                   });
+                        
+
+                   
+            
+                console.log(result.data);
+            
             // console.log(result.request._redirectable._currentUrl);
-            assert(result.data.search("Rankings") >= 0 );
+            //assert(result.data.search("has invited you to join the circle") >= 0 );
         });
     });
 });
