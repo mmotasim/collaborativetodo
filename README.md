@@ -36,6 +36,11 @@ Set the working directory
 ```
 cd collaborativetodo/app/
 ```
+Download the newest version of Node and set it to default
+```
+nvm install 8
+nvm alias default 8
+```
 
 Run the node web server
 ```
