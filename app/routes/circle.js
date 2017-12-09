@@ -10,7 +10,6 @@ router.get('/:circle_id', function(req, res, next) {
     cur_user = req.session.user;
     var oid = new mongoose.Types.ObjectId(circle_id.toString());
     circles.findOne({_id:oid},function(err,circle){
-        console.log(circle.members)
         if(circle.members.includes(cur_user))
         {
             res.render('circle',{circlename:circle.name})

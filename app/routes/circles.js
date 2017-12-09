@@ -11,18 +11,14 @@ router.get('/', function(req, res, next) {
         
         users.findOne({username : user}, async function(err,user){
             circs = []
-            console.log(user.groups)
             for(var i = 0; i<user.groups.length;i++)
             {
                 circle_id = user.groups[i]
-                console.log("THe only group is "+circle_id.toString())
-                //console.log(typeof(circle_id.toString()))
                 var oid = new mongoose.Types.ObjectId(circle_id.toString());
                 circle = await  circles.findOne({_id:oid})
                 circs.push(circle)
         
             }
-            console.log(circs)
             res.render('circles',{circles : circs})
         })
               

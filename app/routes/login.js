@@ -6,7 +6,6 @@ router.get('/', function(req, res, next) {
     if(req.session.user)
     {
         res.redirect('/profile');
-        console.log(" the current user is "+req.session.user);
     }
     else
     {

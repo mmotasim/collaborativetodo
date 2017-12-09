@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
                 var cid = new mongoose.Types.ObjectId(docs[i].for_circle.toString())
                 circle= await circles.findOne({_id:cid})
                 req.circlename = circle.name
-                console.log(req)
                 reqs.push(req)
             }
             res.render('requests',{requests:reqs})
@@ -47,7 +46,6 @@ router.post('/',function(req,res,next){
             }
             else
             {
-                console.log("Removing request")
                 request.remove()
                 res.send("0")
             }
