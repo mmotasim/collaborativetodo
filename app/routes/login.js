@@ -16,12 +16,21 @@ router.get('/', function(req, res, next) {
 });
 router.post('/',function(req,res,next)
 {
-    req.app.locals.checkuser(req.body.name,function(present){
+    req.app.locals.checkuser(req.body.name,async function(present){
     
         if(present)
         {
-            req.session.user = req.body.name
-            res.redirect('/profile');
+            userdoc = await users.findOne({username:req.body.name});
+            if( userdoc.password == req.body.password)
+            {
+                req.session.user = req.body.name
+                res.redirect('/profile');
+            }
+            else
+            {
+                res.render('login', { title: 'Login Page',visible:2 });
+            }
+            
         }
         else
         {
