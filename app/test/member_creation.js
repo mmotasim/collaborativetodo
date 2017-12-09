@@ -22,7 +22,7 @@ describe("Server", function(){
     });
     
     describe('/',function() {
-         it("Check if circles works right", async function(){
+         it("should show request on a user's page", async function(){
            var result = await axios("http://localhost:8080/signup");
            var cookies = result.headers['set-cookie'][0].split(';');
            var cs = cookies[0].split('=');
@@ -34,7 +34,7 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"pr1Ass"
+                       name:"pr1Asdss"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -81,7 +81,7 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/addmember" ,
                    data:{
-                       newuser:"loude_mota",
+                       newuser:"pramod",
                        circle: y
                    },
                    headers:{
@@ -90,17 +90,7 @@ describe("Server", function(){
                    
                    });  
 
-            var result = await axios(
-               {
-                   method :"GET",
-                   url: "http://localhost:8080/login",
-
-                   headers:{
-                       Cookie : cookies[0]
-                   }
-                   
-                   });
-                               
+             
              var result = await axios(
                {
                    method :"GET",
@@ -110,10 +100,11 @@ describe("Server", function(){
                    }
                    
                    });
+
             var result = await axios(
                {
-                   method :"GET",
-                   url: "http://localhost:8080/profile",
+                   method :"POST",
+                   url: "http://localhost:8080/login",
                    data:{
                        name:'pramod'
                    },
@@ -122,14 +113,45 @@ describe("Server", function(){
                    }
                    
                    });
-                        
-
                    
             
-                console.log(result.data);
+                    
             
             // console.log(result.request._redirectable._currentUrl);
             //assert(result.data.search("has invited you to join the circle") >= 0 );
         });
+        it("should show request on a user's page", async function(){
+           var result = await axios("http://localhost:8080/signup");
+           var cookies = result.headers['set-cookie'][0].split(';');
+           var cs = cookies[0].split('=');
+           var cname = cs[0];
+           var cvalue = cs[1];
+           
+           var result = await axios(
+               {
+                   method :"POST",
+                   url: "http://localhost:8080/login",
+                   data:{
+                       name:"pramod"
+                   },
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
+                   });
+            var result = await axios(
+               {
+                   method :"GET",
+                   url: "http://localhost:8080/requests",
+
+                   headers:{
+                       Cookie : cookies[0]
+                   }
+                   
+                   });
+                   
+            assert(result.data.search("has invited you to join the circle") >= 0 );
+        });
+        
     });
 });

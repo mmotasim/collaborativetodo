@@ -32,7 +32,7 @@ describe("Server", function(){
                    method :"POST",
                    url: "http://localhost:8080/login",
                    data:{
-                       name:"pramod"
+                       name:"prasad"
                    },
                    headers:{
                        Cookie : cookies[0]
@@ -62,7 +62,6 @@ describe("Server", function(){
                    
                    });
                    
-            console.log(result.data);
             assert(result.data.search("Here are your circles") >= 0 );
         });
     });
